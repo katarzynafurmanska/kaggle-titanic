@@ -16,10 +16,11 @@ def create_and_fit_decision_tree(data, X, Y, criterion, show_plot=True):
 def calculate_prediction(model, data, features):
     return model.predict(data[features])
 
-def calculate_accuracy(set_name, y_true, y_pred):
+def calculate_accuracy(set_name, y_true, y_pred, print_log=True):
     vol = accuracy_score(y_true, y_pred, normalize=False)
     frac = accuracy_score(y_true, y_pred, normalize=True)
-    print(set_name, ": ", vol, " correctly classified samples - ", round(100*frac,2), "%")
+    if print_log is True:
+        print(set_name, ": ", vol, " correctly classified samples - ", round(100*frac,2), "%")
     return frac
     
 def create_submission(model, test_data, X):
